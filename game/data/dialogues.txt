@@ -1,0 +1,11 @@
++ Est-ce que tout le monde est la?
+  - Player: Attendez, je crois qu'il manque quelqu'un!! 
+    Maman: Oh? 
+      Choix: Tonton Ernest
+        Il manque tonton Ernest!
+        Tonton: Mais... Mais non, je suis là!
+        Player: Ah, ba oui, je ne t'avais pas vu! Coucou tonton!
+        Pretre: Maintenant que ce
+      Choix: Oui. Notre défunt père à ma soeur et moi. J'aimerai lui rendre une
+        
+
