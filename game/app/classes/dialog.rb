@@ -2,7 +2,7 @@ class Dialog
 
   attr_reader :steps
 
-  def initialize(steps)
+  def initialize(steps = [])
     @steps = steps
   end
 
