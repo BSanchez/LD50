@@ -1,4 +1,5 @@
 require "smaug.rb"
+require "./classes/choice.rb"
 
 def tick args
   args.outputs.labels  << [640, 500, 'Hello World!', 5, 1]
