@@ -44,7 +44,7 @@ $dialogs = [
     # Branche poisson d'avril (index: 9)
     Message.new("April's fool! Hahaaaa, that was just a little joke.", :player, :sweat, {}, 1, 1),
     Message.new("Are you serious right now? April's fool? We're in July, you little...", :groom, :tense, {grooms: 5}, 1.2, 1),
-    Message.new("You are God's house, young man, and I shall not tolerate such foolish behavior in this holy place!", :priest, :tense, {priest: 5}, 0.8, 1, -1)
+    Message.new("You are in God's house, young man, and I shall not tolerate such foolish behavior in this holy place!", :priest, :tense, {priest: 5}, 0.8, 1, -1),
     # Branche silence (index: 12)
     Message.new("Yes? What is it, dear? Who is missing?", :mother, :neutral, {crowd:2}, 0.8, 1),
     Message.new("Errr... I, I don't know...", :player, :neutral, {}, 1, 1),
@@ -64,7 +64,7 @@ $dialogs = [
     # Branche radioactif (index: 3)
     Message.new("I read somewhere that it is radioactive! You should take it off at once!", :player, :panic, {grooms: 2}, 1, 1),
     Message.new("Really? Maybe we should...", :sister, :panic, {}, 0.8, 1)
-    Message.new("Don't be ridiculous! Of course it's not, it's used on every wedding ring!", :groom, :tense, {grooms: 2}, 2, 1)
+    Message.new("Don't be ridiculous! Of course it's not, it's used on every wedding ring!", :groom, :tense, {grooms: 2}, 2, 1),
     Message.new("Now sit and don't disturb this wedding any more.", :groom, :neutral, {}, 1, 1, -1),
     # Branche pas ethique (index: 7)
     Message.new("Rhodium is a rare metal, which is extracted in inhuman conditions in south Mediotanzania...", :player, :neutral, {}, 1, 1),
@@ -79,8 +79,7 @@ $dialogs = [
     Message.new("Brother? Hello? What's wrong with rhodium?", :sister, :neutral, {crowd: 1, grooms: 1}, 1, 1),
     Message.new("I... It's... nothing. Nothing's wrong.", :player, :neutral, {}, 1, 1),
     Message.new("There is no problem at all with the rings. Let us resume...", :priest, :neutral, {}, 0.8, 1),
-  ]) # Fin d'interuption "Bague"
-=begin
+  ]), # Fin d'interuption "Bague"
   # Dialogue "Parler latin"
   Dialog.new([
     Message.new("Excuse me, Father, aren't ceremonies supposed to be in Latin?" , :player, :neutral, {priest: 1}, 1, 1),
@@ -94,20 +93,25 @@ $dialogs = [
     # Branche improvise latin (index: 3)
     Message.new("In fact, I do speak Latin. Lorem ipsum dolor sit amet, consectetur adipiscing elit." , :player, :neutral, {}, 1, 2),
     Message.new("Young man,  what you just said makes absolutely no sense, I am afraid." , :priest, :neutral, {priest: 5}, 0.8, 1),
-    Message.new("Oh... are you sure?" , :player, :panic, {}, 1, 1),
-    Message.new("Indeed, I am." , :priest, :neutral, {}, 1, 0, -1),
+    Message.new("Oh... are you sure?" , :player, :sweat, {}, 1, 1),
+    Message.new("Indeed, I am." , :priest, :neutral, {}, 0.8, 0, -1),
     # Branche parle pas latin (index: 7)
-    Message.new("Well, no, not exactly, but, for the sake of traditions..." , :player, :neutral, {}, 1, 1),
+    Message.new("Well, no, not exactly, but, for the sake of traditions..." , :player, :neutral, {}, 0.8, 1),
     Message.new("Hey, please! This ceremony is long enough without having to endure it in Latin!" , :crowd, :tense, {crowd:2}, 1, 2),
     Message.new("Endure?" , :sister, :neutral, {grooms:1}, 1, 0, -1),
     # Branche parle pas latin (index: 10)
-    Message.new("What matters here is that you're not speaking in Latin, and it makes me wonder wether you're a real priest or an impostor! " , :player, :neutral, {}, 1, 1),
-    
-    
-    
+    Message.new("What matters here is that you're not speaking in Latin...", :player, :neutral, {}, 0.9, 1),
+    Message.new("How can we be sure you are the real deal, and not... an impostor?", :player, :neutral, {crowd: -2, grooms: 1, priest: 6}, 1, 1),
+    Message.new("I shall... act as if I didn't hear anything. ", :priest, :tense, {}, 0.6, 1),
+    Message.new("Anyway, please allow me to continue in English." , :priest, :neutral, {}, 0.8, 1),
+  ]), # Fin d'interruption "Parler latin"
 
-    Message.new("Anyway, please allow me to continue in English." , :priest, :neutral, {}, 1, -1),
-=end
+  # -------- Pieges à con ---------
+  Dialog.new([
+    Message.new("Yes? Speak, my son, what is it?" :priest, :neutral, {crowd: 1, grooms: 1, priest: 1}, 0.8, 1),
+    Message.new("Er... I... my car... I mean..." :player, :neutral, {}, 0.8, 0),
+    Message.new("I'm sorry, it's nothing." :player, :neutral, {}, 1, 0),
+    Message.new("Back to the ceremony, in this case." :priest, :neutral, {}, 0.8, 1),
 
   ])
 
