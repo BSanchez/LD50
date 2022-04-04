@@ -11,7 +11,7 @@ $story = Dialog.new([
 
 $notifications = [
   Notification.new("We're looking for an open store, hang in there!", 2),
-  Notification.new("Damn evrything is closed!! :(", 10),
+  Notification.new("Damn everything is closed!! :(", 10),
   Notification.new("Low battery (2%), plug in your phone", 15, :panic),
   Notification.new("Atlast, an open shop! We're looking for a parking spot", 20),
   Notification.new("Gosh, there's a crazy line! You doing fine over there?", 30),
@@ -88,7 +88,7 @@ $dialogs = [
       Choice.new("I do", 3, :neutral),
       Choice.new("I don't", 7, :sweat),
       Choice.new("The real question is can YOU speak Latin?", 10, :tense),
-      Choice.new("", 12),
+      Choice.new("", 13),
     ]),
     # Branche improvise latin (index: 3)
     Message.new("In fact, I do speak Latin. Lorem ipsum dolor sit amet, consectetur adipiscing elit." , :player, :neutral, {}, 1, 2),
@@ -102,17 +102,53 @@ $dialogs = [
     # Branche parle pas latin (index: 10)
     Message.new("What matters here is that you're not speaking in Latin...", :player, :neutral, {}, 0.9, 1),
     Message.new("How can we be sure you are the real deal, and not... an impostor?", :player, :neutral, {crowd: -2, grooms: 1, priest: 6}, 1, 1),
-    Message.new("I shall... act as if I didn't hear anything. ", :priest, :tense, {}, 0.6, 1),
+    Message.new("I shall... pretend I didn't hear anything. ", :priest, :tense, {}, 0.6, 1, -1),
+    # silence (index: 13)
+    Message.new("..." , :player, :tense, {grooms: 1, priest: 1}, 0.6, 1),
+    Message.new("It seems you can't even speak at all. Are you all right, my son?" , :priest, :sweay, {}, 0.6, 1),
     Message.new("Anyway, please allow me to continue in English." , :priest, :neutral, {}, 0.8, 1),
   ]), # Fin d'interruption "Parler latin"
+  # Dialogue "Regardez mamie!"
+  Dialog.new([
+    Message.new("Everyone, look at grandma!", :player, :anger, {}, 1, 0)
+    ChoiceList.new([
+      Choice.new("She's getting emotional.", 2, :happy),
+      Choice.new("She's not paying attention.", 7, :tense),
+      Choice.new("She's fainting!", 10, :anger),
+      Choice.new("", 12),
+    ]),
+    # Branche "elle est emue" (index: 2)
+    Message.new("Look! Granma is crying with joy... This is so beautiful!" , :player, :happy, {}, 1, 1),
+    Message.new("..." , :sister, :tense, {grooms: 3, priest: 1}, 0.5, 2),
+    Message.new("Riiiight... Let's start again where we left off, Father." , :mom, :joy, {}, 0.8, 1, -1),
+    # Branche 'elle ecoute pas' (index: 5)
+    Message.new("Look, everyone, grandma is nodding off! " , :player, :sweat, {}, 1, 1),
+    Message.new("I bet she didn't hear the last part! Could you please start over, Father?" , :player, :neutral, {}, 1, 1, -1),
+    # Branche 'elle fait un malaise!' (index: 7)
+    Message.new("Hey, grandma looks unwell! She's all wrinkled and she's drolling!" , :player, :anger, {}, 1.2, 1),
+    Message.new("We need a doctor NOW! We can't let her ruin this wedding!" , :player, :anger, {crowd:3, grooms: -1}, 1.2, 1),
+    Message.new("Dear, she's looking just as usual..." , :mom, :panic, {}, 1, 1),
+    Message.new("Oh? Nevermind, then." , :player, :sweat, {}, 1, 1, -1),
+    # Branche silence (index: 7)
+    Message.new("..." , :player, :tense, {grooms: 1, priest: 1}, 0.6, 1),
+    Message.new("Anyway, let us start over..." , :priest, :neutral, {}, 1, 1),
+  ]),
 
   # -------- Pieges à con ---------
+  # J'ai pas fermé la voiture!
   Dialog.new([
-    Message.new("Yes? Speak, my son, what is it?" :priest, :neutral, {crowd: 1, grooms: 1, priest: 1}, 0.8, 1),
+    Message.new("Yes? Speak, my son, what is it?", :priest, :neutral, {crowd: 1, grooms: 1, priest: 1}, 0.8, 1),
     Message.new("Er... I... my car... I mean..." :player, :neutral, {}, 0.8, 0),
     Message.new("I'm sorry, it's nothing." :player, :neutral, {}, 1, 0),
     Message.new("Back to the ceremony, in this case." :priest, :neutral, {}, 0.8, 1),
-
-  ])
+  ]),
+  # Ou sont les toilettes ?
+  Dialog.new([
+    Message.new("Sorry to interrupt, but would anyone please tell me where the toilet is?", :player, :sweat, {}, 1, 1),
+    Message.new("Shhh! Now is not the time!", :mom, :tense, {crowd: 1}, 1.2, 0),
+    Message.new("Please! I can't hold it any longer, I'm serious!", :player, :panic, {}, 1.2, 1),
+    Message.new("Quiet!! I demand silence in the house of God!", :player, :panic, {priest: 2}, 0.8, 1),
+  ]),
+  #
 
 ]
