@@ -134,7 +134,7 @@ $dialogs = [
     Message.new("Anyway, let us start over..." , :priest, :neutral, {}, 1, 1),
   ]),
 
-  # -------- Pieges à con ---------
+  # -------- Dialogues lineaires ---------
   # J'ai pas fermé la voiture!
   Dialog.new([
     Message.new("Yes? Speak, my son, what is it?", :priest, :neutral, {crowd: 1, grooms: 1, priest: 1}, 0.8, 1),
@@ -149,6 +149,19 @@ $dialogs = [
     Message.new("Please! I can't hold it any longer, I'm serious!", :player, :panic, {}, 1.2, 1),
     Message.new("Quiet!! I demand silence in the house of God!", :player, :panic, {priest: 2}, 0.8, 1),
   ]),
-  #
+  # Photo floue
+  Dialog.new([
+    Message.new("Sorry, can we do this part again? The last picture I took turned out blurry.", :player, :tense, {grooms: 1, priest: 2}, 1, 1),
+    Message.new("Don't interrupt for small details, you little...", :groom, :tense, {},  1, 1),
+    Message.new("... As I was saying...", :priest, :neutral, {}, 0.8, 1),
+  ]),
+  # Tout le monde est baptisé?
+  Dialog.new([
+    Message.new("Hold it for a second. Has everyone been baptized here ?", :player, :tense, {}, 1, 1),
+    Message.new("Come again?", :priest, :neutral, {}, 1, 1),
+    Message.new("We can't let pagan influences ruin this holy ceremony!", :player, :tense, {}, 1, 1),
+    Message.new("Father, you should check the baptism certificates at once!", :player, :anger, {}, 1, 1),
+    Message.new("I'm sure the strength of your faith is enough to shield us from... pagan influence.", :priest, :happy, {crowd: 3, priest: -2}, 1, 1),
+  ]),
 
 ]
