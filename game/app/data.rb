@@ -161,7 +161,23 @@ $dialogs = [
     Message.new("Come again?", :priest, :neutral, {}, 1, 1),
     Message.new("We can't let pagan influences ruin this holy ceremony!", :player, :tense, {}, 1, 1),
     Message.new("Father, you should check the baptism certificates at once!", :player, :anger, {}, 1, 1),
-    Message.new("I'm sure the strength of your faith is enough to shield us from... pagan influence.", :priest, :happy, {crowd: 3, priest: -2}, 1, 1),
+    Message.new("I'm sure the strength of your faith is enough to shield us all from... pagan influences.", :priest, :happy, {crowd: 3, priest: -2}, 1, 1),
   ]),
+  # Les alliances sont à la bonne taille?
+  Dialog.new([
+    Message.new("What is it?", :groom, :neutral, {}, 1, 0),
+    Message.new("Did you make sure the rings are the right size?", :player, :neutral, {}, 1, 1),
+    Message.new("I heard before that you can lose your finger if the ring is too tight...", :player, :panic, {}, 0.8, 1),
+    Message.new("Don't worry, little brother, we did...", :sister, :panic, {}, 1, 0),
+    Message.new("Please, sis! Swear to me that you won't lose your finger!", :player, :anger, {}, 1., 1),
+    Message.new("I don't want to see your hand rot and fall off your arm!", :player, :anger, {crowd: 2, grooms: 3}, 1, 1),
+    Message.new("The rings are the right size, now SHUT IT!", :groom, :anger, {}, 1.2, 1),
+  ]),
+  Dialog.new([
+    Message.new("Will it be basmati or thai?", :player, :tense, {priest: 2}, 1, 1),
+    Message.new("... What?", :priest, :sweat, {}, 1, 0),
+    Message.new("...", :player, :neutral, {}, 0.6, 0),
+    Message.new("Nothing.", :player, :neutral, {}, 1, 0),
+  ])
 
 ]
